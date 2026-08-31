@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQRAR Focus+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">IF+</div>
+            <div>
+                <h2>IQRAR Focus+</h2>
+                <span>Study smarter</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <button class="nav-btn active" data-page="dashboard">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-btn" data-page="study">
+                <span>📚</span> Study
+            </button>
+
+            <button class="nav-btn" data-page="focus">
+                <span>⏱</span> Focus
+            </button>
+
+            <button class="nav-btn" data-page="questions">
+                <span>❓</span> Question Bank
+            </button>
+
+            <button class="nav-btn" data-page="analytics">
+                <span>📊</span> Analytics
+            </button>
+
+            <button class="nav-btn" data-page="achievements">
+                <span>🏆</span> Achievements
+            </button>
+
+            <button class="nav-btn" data-page="settings">
+                <span>⚙</span> Settings
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="creator">
+                Made by Iqrar ❤️
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <div class="mobile-brand">IQRAR Focus+</div>
+                <p id="page-subtitle">Your personal study dashboard</p>
+            </div>
+
+            <div class="top-actions">
+                <span id="today-date"></span>
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="page active" id="dashboard">
+
+            <div class="hero">
+
+                <div>
+                    <span class="eyebrow">WELCOME BACK 👋</span>
+
+                    <h1>
+                        Stay focused.<br>
+                        <span>Keep improving.</span>
+                    </h1>
+
+                    <p>
+                        Track your study sessions, build your streak,
+                        and keep moving toward your goals.
+                    </p>
+
+                    <button class="primary-btn" onclick="navigate('study')">
+                        Start Studying →
+                    </button>
+                </div>
+
+                <div class="hero-progress">
+                    <div class="progress-ring">
+                        <div>
+                            <strong id="hero-progress">0%</strong>
+                            <small>Today</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div>
+                        <span>Current Streak</span>
+                        <strong id="stat-streak">0 days</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⏱</div>
+                    <div>
+                        <span>Study Time</span>
+                        <strong id="stat-time">0 min</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div>
+                        <span>Tasks Done</span>
+                        <strong id="stat-tasks">0 / 0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div>
+                        <span>Goal</span>
+                        <strong id="stat-goal">120 min</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Today's Tasks</h3>
+                            <span>Keep your plan moving</span>
+                        </div>
+
+                        <button class="text-btn" onclick="navigate('study')">
+                            View all
+                        </button>
+                    </div>
+
+                    <div id="dashboard-tasks" class="task-list"></div>
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Quick Focus</h3>
+                            <span>Start a focused session</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-focus">
+
+                        <div class="mini-timer" id="mini-timer">
+                            25:00
+                        </div>
+
+                        <button class="primary-btn full-btn"
+                                onclick="navigate('focus')">
+                            Open Focus Timer
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDY ================= -->
+
+        <section class="page" id="study">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">STUDY PLANNER</span>
+                    <h1>Plan your day</h1>
+                    <p>Create tasks and track what you complete.</p>
+                </div>
+            </div>
+
+
+            <div class="study-layout">
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Add Study Task</h3>
+                            <span>What do you want to study?</span>
+                        </div>
+                    </div>
+
+                    <form id="task-form" class="task-form">
+
+                        <input
+                            id="task-input"
+                            type="text"
+                            placeholder="e.g. Physics — Units & Measurements"
+                            required
+                        >
+
+                        <select id="task-subject">
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <input
+                            id="task-minutes"
+                            type="number"
+                            min="1"
+                            value="60"
+                            placeholder="Minutes"
+                        >
+
+                        <button class="primary-btn" type="submit">
+                            + Add Task
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Today's Plan</h3>
+                            <span id="task-count-label">0 tasks</span>
+                        </div>
+
+                        <button class="danger-text" onclick="clearTasks()">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div id="study-task-list" class="task-list large"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CALENDAR -->
+
+            <div class="panel calendar-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h3>Study Calendar</h3>
+                        <span>Click a date to mark it as studied.</span>
+                    </div>
+
+                    <div class="calendar-controls">
+                        <button onclick="changeMonth(-1)">‹</button>
+                        <strong id="calendar-month"></strong>
+                        <button onclick="changeMonth(1)">›</button>
+                    </div>
+
+                </div>
+
+                <div id="calendar" class="calendar"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOCUS ================= -->
+
+        <section class="page" id="focus">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">DEEP WORK</span>
+                    <h1>Focus Mode</h1>
+                    <p>Work in focused sessions and build momentum.</p>
+                </div>
+            </div>
+
+
+            <div class="focus-container">
+
+                <div class="focus-card">
+
+                    <div class="focus-mode-label" id="focus-mode">
+                        FOCUS SESSION
+                    </div>
+
+                    <div class="timer" id="timer">
+                        25:00
+                    </div>
+
+                    <div class="timer-status" id="timer-status">
+                        Ready when you are.
+                    </div>
+
+                    <div class="timer-controls">
+
+                        <button
+                            class="primary-btn"
+                            id="timer-start"
+                            onclick="toggleTimer()">
+                            Start
+                        </button>
+
+                        <button
+                            class="secondary-btn"
+                            onclick="resetTimer()">
+                            Reset
+                        </button>
+
+                    </div>
+
+                    <div class="timer-presets">
+
+                        <button onclick="setTimer(25)">25 min</button>
+                        <button onclick="setTimer(45)">45 min</button>
+                        <button onclick="setTimer(60)">60 min</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel focus-info">
+
+                    <h3>Focus tips</h3>
+
+                    <ul>
+                        <li>Choose one task before starting.</li>
+                        <li>Keep distractions away.</li>
+                        <li>Take a short break between sessions.</li>
+                        <li>Record your study time honestly.</li>
+                    </ul>
+
+                    <div class="focus-today">
+                        <span>Today's focused time</span>
+                        <strong id="focus-total">0 minutes</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUESTIONS ================= -->
+
+        <section class="page" id="questions">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">PRACTICE</span>
+                    <h1>Question Bank</h1>
+                    <p>Practice questions from your uploaded question data.</p>
+                </div>
+
+            </div>
+
+
+            <div id="question-browser">
+
+                <div class="panel">
+
+                    <div class="question-intro">
+
+                        <div class="big-question-icon">❓</div>
+
+                        <div>
+                            <h2>PDF Question Bank</h2>
+                            <p>
+                                Your generated JSON question files can be
+                                placed inside <code>data/questions</code>.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        onclick="loadQuestionFiles()">
+                        Load Questions
+                    </button>
+
+                </div>
+
+                <div id="question-file-list"></div>
+
+            </div>
+
+
+            <div id="quiz-area" class="hidden"></div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section class="page" id="analytics">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">PERFORMANCE</span>
+                    <h1>Analytics</h1>
+                    <p>See how consistently you're studying.</p>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div>
+                        <span>Total Study Time</span>
+                        <strong id="analytics-time">0 min</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div>
+                        <span>Best Streak</span>
+                        <strong id="analytics-best">0 days</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div>
+                        <span>Completed Tasks</span>
+                        <strong id="analytics-completed">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div>
+                        <span>Questions Attempted</span>
+                        <strong id="analytics-questions">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <h3>Last 7 Days</h3>
+                        <span>Study minutes per day</span>
+                    </div>
+                </div>
+
+                <div id="weekly-chart" class="weekly-chart"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ACHIEVEMENTS ================= -->
+
+        <section class="page" id="achievements">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">MILESTONES</span>
+                    <h1>Achievements</h1>
+                    <p>Small wins become big progress.</p>
+                </div>
+
+            </div>
+
+
+            <div id="achievement-grid" class="achievement-grid"></div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section class="page" id="settings">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">CUSTOMIZE</span>
+                    <h1>Settings</h1>
+                    <p>Adjust your study preferences.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Daily Study Goal</h3>
+                            <span>Target minutes per day</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+
+                        <input
+                            id="goal-input"
+                            type="number"
+                            min="1"
+                            value="120"
+                        >
+
+                        <button
+                            class="primary-btn"
+                            onclick="saveGoal()">
+                            Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Focus Duration</h3>
+                            <span>Default timer length</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+
+                        <select id="focus-duration">
+
+                            <option value="25">25 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">60 minutes</option>
+
+                        </select>
+
+                        <button
+                            class="primary-btn"
+                            onclick="saveFocusDuration()">
+                            Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Data</h3>
+                            <span>Your data is stored locally in this browser.</span>
+                        </div>
+                    </div>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="exportData()">
+                        Export My Data
+                    </button>
+
+                    <button
+                        class="danger-btn"
+                        onclick="resetAllData()">
+                        Reset All Data
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
